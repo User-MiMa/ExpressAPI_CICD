@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "db:generate": "pnpm dlx drizzle-kit generate",
+    "db:generate": "drizzle-kit generate",
     "db:migrate": "node src/db/migrate.js",
     "docker:build": "docker build -t cicd .",
     "docker:run": "docker run -p 3000:3000 --init --rm cicd",
