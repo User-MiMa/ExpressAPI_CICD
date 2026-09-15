@@ -12,7 +12,7 @@
     "format:check": "prettier . --check",
     "lint": "pnpm dlx eslint .",
     "lint:fix": "pnpm dlx eslint . --fix",
-    "start": "node server.js",
+    "start": "node src/server.js",
     "test": "vitest",
     "dev": "vite",
     "build": "vite build",
