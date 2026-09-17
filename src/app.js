@@ -2,6 +2,8 @@ import express from 'express';
 import getDb from './db/index.js';
 import { subscribers } from './db/schema.js';
 import validator from 'validator';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distPath = path.join(__dirname, '..', 'dist');
