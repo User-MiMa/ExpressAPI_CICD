@@ -3,10 +3,13 @@ import getDb from './db/index.js';
 import { subscribers } from './db/schema.js';
 import validator from 'validator';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const distPath = path.join(__dirname, '..', 'dist');
+
 const app = express();
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.send('App running');
 });
 
@@ -37,5 +40,7 @@ app.post('/api/subscribers', async (req, res) => {
     res.status(500).json({ error: 'An error ocurred' });
   }
 });
+
+app.use(express.static(distPath));
 
 export { app };
