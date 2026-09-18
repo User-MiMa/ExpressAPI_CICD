@@ -14,6 +14,7 @@ describe('Unit test suite', () => {
   test('Displays expected form', () => {
     render(<App />);
     expect(document.querySelector('input')).toBeInTheDocument();
+    expect(screen.getByLabelText('Enter your Email')).toBeInTheDocument();
     expect(screen.getByRole('button')).toBeInTheDocument();
     expect(screen.getByRole('button').textContent).toBe('I want to know!');
   });
