@@ -64,5 +64,6 @@ describe('POST /api/subscribers', () => {
       .send({ email: 'a@b.com' });
 
     expect(res.status).toBe(500);
+    expect(res.body).toEqual({ error: 'An error ocurred' });
   });
 });
