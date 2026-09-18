@@ -36,7 +36,7 @@ app.post('/api/subscribers', async (req, res) => {
       return res.status(409).json({ error: 'Already subscribed' });
     }
 
-    res.sendStatus(200);
+    res.status(200).json({ message: 'Successfully subscribed' });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'An error ocurred' });
