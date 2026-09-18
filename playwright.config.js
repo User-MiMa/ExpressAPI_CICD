@@ -12,7 +12,6 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -80,7 +79,6 @@ export default defineConfig({
     command: 'pnpm start',
     url: 'http://localhost:3000',
     reuseExistingServer: false,
-    env: { DATABASE_URL: process.env.DATABASE_URL_TEST ?? ''},
+    env: { DATABASE_URL: process.env.DATABASE_URL_TEST ?? '' },
   },
 });
-

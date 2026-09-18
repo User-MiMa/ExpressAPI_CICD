@@ -15,7 +15,7 @@
     "start": "node src/server.js",
     "test": "vitest",
     "e2e:test": "pnpm exec playwright test",
-    "e2e:test:report":"pnpm exec playwright show-report",
+    "e2e:test:report": "pnpm exec playwright show-report",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
