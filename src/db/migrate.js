@@ -5,7 +5,7 @@ import getDb from './index.js';
 try {
   await migrate(getDb(), { migrationsFolder: './drizzle/migrations' });
   // console.log('All migrations applied successfully');
-} catch {
+} catch (error) {
   // eslint-disable-next-line no-console
   console.error('Migration failed', error);
   process.exitCode = 1;
