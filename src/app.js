@@ -2,11 +2,16 @@ import express from 'express';
 import getDb from './db/index.js';
 import { subscribers } from './db/schema.js';
 import validator from 'validator';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const distPath = path.join(__dirname, '..', 'dist');
 
 const app = express();
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.send('App running');
 });
 
@@ -31,11 +36,13 @@ app.post('/api/subscribers', async (req, res) => {
       return res.status(409).json({ error: 'Already subscribed' });
     }
 
-    res.sendStatus(200);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'An error ocurred' });
+    res.status(200).json({ message: 'Successfully subscribed' });
+  } catch {
+    // console.error(err);
+    res.status(500).json({ error: `An error ocurred` });
   }
 });
+
+app.use(express.static(distPath));
 
 export { app };
