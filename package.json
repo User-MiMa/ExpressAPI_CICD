@@ -14,7 +14,7 @@
     "lint:fix": "pnpm dlx eslint . --fix",
     "start": "node src/server.js",
     "test": "vitest",
-    "test:coverage":"vitest --coverage",
+    "test:coverage": "vitest --coverage",
     "e2e:test": "pnpm exec playwright test",
     "e2e:test:report": "pnpm exec playwright show-report",
     "dev": "vite",

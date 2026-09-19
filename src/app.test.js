@@ -57,13 +57,13 @@ describe('POST /api/subscribers', () => {
   });
 
   test('Missing email field -> 400 + no storage', async () => {
-  const res = await request(app).post('/api/subscribers').send({});
+    const res = await request(app).post('/api/subscribers').send({});
 
-  expect(res.status).toBe(400);
-  expect(res.body).toEqual({ error: 'Invalid email' });
-  expect(store.size).toBe(0);
-  expect(getDb).not.toHaveBeenCalled();
-});
+    expect(res.status).toBe(400);
+    expect(res.body).toEqual({ error: 'Invalid email' });
+    expect(store.size).toBe(0);
+    expect(getDb).not.toHaveBeenCalled();
+  });
 
   test('Database throws -> 500', async () => {
     getDb.mockImplementation(() => {
