@@ -1,11 +1,12 @@
 import 'dotenv/config';
 import { migrate } from 'drizzle-orm/neon-http/migrator';
-import { db } from './index.js';
+import getDb from './index.js';
 
 try {
-  await migrate(db, { migrationsFolder: './drizzle/migrations' });
+  await migrate(getDb(), { migrationsFolder: './drizzle/migrations' });
   // console.log('All migrations applied successfully');
 } catch {
-  // console.error('Migration failed', error);
+  // eslint-disable-next-line no-console
+  console.error('Migration failed', error);
   process.exitCode = 1;
 }
