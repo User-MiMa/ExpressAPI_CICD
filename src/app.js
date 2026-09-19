@@ -38,8 +38,8 @@ app.post('/api/subscribers', async (req, res) => {
 
     res.status(200).json({ message: 'Successfully subscribed' });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'An error ocurred' });
+    // console.error(err);
+    res.status(500).json({ error: `An error ocurred (${err})` });
   }
 });
 

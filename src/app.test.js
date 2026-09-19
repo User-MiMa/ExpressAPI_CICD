@@ -33,9 +33,7 @@ describe('POST /api/subscribers', () => {
   });
 
   test('Subscribe used email -> 409 + stored', async () => {
-    const res = await request(app)
-      .post('/api/subscribers')
-      .send({ email: 'b@c.com' });
+    await request(app).post('/api/subscribers').send({ email: 'b@c.com' });
 
     const res2 = await request(app)
       .post('/api/subscribers')
