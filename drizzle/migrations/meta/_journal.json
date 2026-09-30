@@ -15,6 +15,13 @@
       "when": 1790742031882,
       "tag": "0001_short_amazoness",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790774287917,
+      "tag": "0002_backfill_email_adress",
+      "breakpoints": true
     }
   ]
 }
