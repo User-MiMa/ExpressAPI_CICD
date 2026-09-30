@@ -29,8 +29,8 @@ app.post('/api/subscribers', async (req, res) => {
     const queryUserEmail = await dataBase
       .insert(subscribers)
       .values({ email: email, emailAdress: email })
-      .onConflictDoNothing({ target: subscribers.email })
-      .returning({ email: subscribers.email });
+      .onConflictDoNothing({ target: subscribers.emailAdress })
+      .returning({ email: subscribers.emailAdress });
 
     if (queryUserEmail.length === 0) {
       return res.status(409).json({ error: 'Already subscribed' });
