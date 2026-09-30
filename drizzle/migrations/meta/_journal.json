@@ -22,6 +22,13 @@
       "when": 1790774287917,
       "tag": "0002_backfill_email_adress",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1790776320605,
+      "tag": "0003_smiling_human_fly",
+      "breakpoints": true
     }
   ]
 }
