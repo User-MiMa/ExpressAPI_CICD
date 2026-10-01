@@ -28,7 +28,7 @@ app.post('/api/subscribers', async (req, res) => {
 
     const queryUserEmail = await dataBase
       .insert(subscribers)
-      .values({ email: email, emailAdress: email })
+      .values({ emailAdress: email })
       .onConflictDoNothing({ target: subscribers.emailAdress })
       .returning({ email: subscribers.emailAdress });
 
