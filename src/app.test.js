@@ -12,11 +12,23 @@ beforeEach(() => {
 });
 
 describe('GET /api/health', () => {
-  test('Returns "App running"', async () => {
+  test('DB up -> 200 ok', async () => {
     const res = await request(app).get('/api/health');
 
     expect(res.status).toBe(200);
-    expect(res.text).toBe('App running');
+    expect(res.body).toEqual({ status: 'ok' });
+  });
+
+  test('DB down -> 503 unavailable', async () => {
+    getDb.mockImplementation(() => ({
+      execute: async () => {
+        throw new Error('db down');
+      },
+    }));
+    const res = await request(app).get('/api/health');
+
+    expect(res.status).toBe(503);
+    expect(res.body).toEqual({ status: 'unavailable' });
   });
 });
 
