@@ -4,6 +4,7 @@ import { subscribers } from './db/schema.js';
 import validator from 'validator';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { sql } from 'drizzle-orm';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distPath = path.join(__dirname, '..', 'dist');
@@ -11,8 +12,13 @@ const distPath = path.join(__dirname, '..', 'dist');
 const app = express();
 app.use(express.json());
 
-app.get('/api/health', (req, res) => {
-  res.send('App running');
+app.get('/api/health', async (req, res) => {
+  try {
+    await getDb().execute(sql`SELECT 1`);
+    res.status(200).json({ status: 'ok' });
+  } catch {
+    res.status(503).json({ status: 'unavailable' });
+  }
 });
 
 app.post('/api/subscribers', async (req, res) => {

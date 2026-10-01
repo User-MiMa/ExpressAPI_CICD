@@ -6,6 +6,7 @@ export function resetFakeDb() {
 
 export function seedFakeDb(getDbMock) {
   getDbMock.mockImplementation(() => ({
+    execute: async () => [{ '?column?': 1 }],
     insert: () => ({
       values: ({ emailAdress }) => ({
         onConflictDoNothing: () => ({
