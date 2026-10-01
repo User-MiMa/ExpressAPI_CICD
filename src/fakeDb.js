@@ -7,12 +7,12 @@ export function resetFakeDb() {
 export function seedFakeDb(getDbMock) {
   getDbMock.mockImplementation(() => ({
     insert: () => ({
-      values: ({ email }) => ({
+      values: ({ emailAdress }) => ({
         onConflictDoNothing: () => ({
           returning: async () => {
-            if (store.has(email)) return [];
-            store.set(email, { email });
-            return [{ email }];
+            if (store.has(emailAdress)) return [];
+            store.set(emailAdress, { emailAdress });
+            return [{ emailAdress }];
           },
         }),
       }),

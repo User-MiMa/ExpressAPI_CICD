@@ -11,7 +11,7 @@ export default async function globalSetup() {
   }
   const client = drizzle({ client: neon(url) });
   await client.execute(
-    sql`DELETE FROM subscribers WHERE email LIKE 'it-%@example.com'`,
+    sql`DELETE FROM subscribers WHERE email_adress LIKE 'it-%@example.com'`,
   );
   // console.log('globalSetup: test subscribers wiped');
 }
